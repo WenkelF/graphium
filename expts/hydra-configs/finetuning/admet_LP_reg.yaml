@@ -1,0 +1,65 @@
+# @package _global_
+
+defaults:
+  - override /tasks/loss_metrics_datamodule: admet
+
+constants:
+  task: tbd
+  name: finetune_${constants.task}
+  wandb:
+    name: ${constants.name}
+    project: finetuning
+    entity: recursion
+  seed: 42
+  max_epochs: 100
+  data_dir: ../data/graphium/admet/${constants.task}
+  datacache_path: ../datacache/admet/${constants.task}
+  raise_train_error: true
+
+datamodule:
+  args:
+    batch_size_training: 32
+    dataloading_from: ram
+    persistent_workers: true
+    num_workers: 4
+  
+trainer:
+  model_checkpoint:
+    dirpath: model_checkpoints/admet/mpnn/
+    every_n_epochs: 200
+  trainer:
+    precision: 32
+    check_val_every_n_epoch: 1
+  early_stopping:
+    monitor: loss/val # graph_${constants.task}/${metric}/val
+    min_delta: 0.001
+    patience: 10
+    mode: min # ${eval:"'min' if ${predictor.metrics_on_progress_bar.${constants.task}} == 'mae' else 'max'"}
+  accumulate_grad_batches: none
+  
+predictor:
+  optim_kwargs:
+    lr: 0.000005
+
+
+# == Fine-tuning config == 
+
+finetuning:
+  task: ${constants.task}
+  level: graph
+  pretrained_model: tbd
+  finetuning_module: graph_output_nn  
+  sub_module_from_pretrained: graph
+  new_sub_module: graph
+
+  keep_modules_after_finetuning_module: # optional
+    task_heads-pcqm4m_g25:
+      new_sub_module: ${constants.task}
+      hidden_dims: 256
+      depth: 2
+      last_activation: none
+      out_dim: 1
+
+  # Training
+  # unfreeze_pretrained_depth: tbd
+  epoch_unfreeze_all: none

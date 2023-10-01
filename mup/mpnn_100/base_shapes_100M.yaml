@@ -1,0 +1,695 @@
+# This is a base shape file encoded in yaml
+# - `null` indicates a dimension is "finite", i.e. a non-"width" dimension
+# - a number indicates the base dimension of an "infinite" dimension, i.e. some notion of "width"
+encoder_manager.pe_encoders.la_pos.linear_in.linear.bias:
+- 108
+encoder_manager.pe_encoders.la_pos.linear_in.linear.weight:
+- 108
+- null
+encoder_manager.pe_encoders.la_pos.pe_encoder.fully_connected.0.linear.bias:
+- 108
+encoder_manager.pe_encoders.la_pos.pe_encoder.fully_connected.0.linear.weight:
+- 108
+- 108
+encoder_manager.pe_encoders.la_pos.pe_encoder.fully_connected.1.linear.bias:
+- 108
+encoder_manager.pe_encoders.la_pos.pe_encoder.fully_connected.1.linear.weight:
+- 108
+- 108
+encoder_manager.pe_encoders.la_pos.post_mlp.fully_connected.0.linear.bias:
+- 54
+encoder_manager.pe_encoders.la_pos.post_mlp.fully_connected.0.linear.weight:
+- 54
+- 108
+encoder_manager.pe_encoders.rw_pos.first_normalization.bias:
+- null
+encoder_manager.pe_encoders.rw_pos.first_normalization.weight:
+- null
+encoder_manager.pe_encoders.rw_pos.pe_encoder.first_normalization.bias:
+- null
+encoder_manager.pe_encoders.rw_pos.pe_encoder.first_normalization.weight:
+- null
+encoder_manager.pe_encoders.rw_pos.pe_encoder.fully_connected.0.linear.bias:
+- 108
+encoder_manager.pe_encoders.rw_pos.pe_encoder.fully_connected.0.linear.weight:
+- 108
+- null
+encoder_manager.pe_encoders.rw_pos.pe_encoder.fully_connected.0.normalization.bias:
+- 108
+encoder_manager.pe_encoders.rw_pos.pe_encoder.fully_connected.0.normalization.weight:
+- 108
+encoder_manager.pe_encoders.rw_pos.pe_encoder.fully_connected.1.linear.bias:
+- 54
+encoder_manager.pe_encoders.rw_pos.pe_encoder.fully_connected.1.linear.weight:
+- 54
+- 108
+encoder_manager.pe_encoders.rw_pos.pe_encoder.fully_connected.1.normalization.bias:
+- 54
+encoder_manager.pe_encoders.rw_pos.pe_encoder.fully_connected.1.normalization.weight:
+- 54
+gnn.layers.0.edge_model.fully_connected.0.linear.bias:
+- 54
+gnn.layers.0.edge_model.fully_connected.0.linear.weight:
+- 54
+- 270
+gnn.layers.0.edge_model.fully_connected.0.normalization.bias:
+- 54
+gnn.layers.0.edge_model.fully_connected.0.normalization.weight:
+- 54
+gnn.layers.0.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.0.edge_model.fully_connected.1.linear.weight:
+- 37
+- 54
+gnn.layers.0.node_model.fully_connected.0.linear.bias:
+- 108
+gnn.layers.0.node_model.fully_connected.0.linear.weight:
+- 108
+- 398
+gnn.layers.0.node_model.fully_connected.0.normalization.bias:
+- 108
+gnn.layers.0.node_model.fully_connected.0.normalization.weight:
+- 108
+gnn.layers.0.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.0.node_model.fully_connected.1.linear.weight:
+- 570
+- 108
+gnn.layers.0.norm_layer.bias:
+- 570
+gnn.layers.0.norm_layer.weight:
+- 570
+gnn.layers.1.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.1.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.1.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.1.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.1.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.1.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.1.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.1.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.1.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.1.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.1.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.1.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.1.norm_layer.bias:
+- 570
+gnn.layers.1.norm_layer.weight:
+- 570
+gnn.layers.10.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.10.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.10.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.10.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.10.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.10.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.10.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.10.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.10.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.10.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.10.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.10.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.10.norm_layer.bias:
+- 570
+gnn.layers.10.norm_layer.weight:
+- 570
+gnn.layers.11.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.11.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.11.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.11.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.11.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.11.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.11.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.11.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.11.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.11.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.11.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.11.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.11.norm_layer.bias:
+- 570
+gnn.layers.11.norm_layer.weight:
+- 570
+gnn.layers.12.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.12.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.12.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.12.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.12.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.12.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.12.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.12.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.12.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.12.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.12.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.12.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.12.norm_layer.bias:
+- 570
+gnn.layers.12.norm_layer.weight:
+- 570
+gnn.layers.13.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.13.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.13.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.13.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.13.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.13.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.13.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.13.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.13.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.13.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.13.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.13.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.13.norm_layer.bias:
+- 570
+gnn.layers.13.norm_layer.weight:
+- 570
+gnn.layers.14.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.14.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.14.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.14.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.14.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.14.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.14.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.14.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.14.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.14.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.14.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.14.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.14.norm_layer.bias:
+- 570
+gnn.layers.14.norm_layer.weight:
+- 570
+gnn.layers.15.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.15.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.15.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.15.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.15.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.15.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.15.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.15.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.15.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.15.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.15.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.15.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.15.norm_layer.bias:
+- 570
+gnn.layers.15.norm_layer.weight:
+- 570
+gnn.layers.2.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.2.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.2.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.2.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.2.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.2.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.2.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.2.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.2.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.2.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.2.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.2.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.2.norm_layer.bias:
+- 570
+gnn.layers.2.norm_layer.weight:
+- 570
+gnn.layers.3.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.3.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.3.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.3.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.3.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.3.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.3.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.3.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.3.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.3.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.3.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.3.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.3.norm_layer.bias:
+- 570
+gnn.layers.3.norm_layer.weight:
+- 570
+gnn.layers.4.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.4.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.4.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.4.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.4.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.4.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.4.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.4.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.4.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.4.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.4.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.4.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.4.norm_layer.bias:
+- 570
+gnn.layers.4.norm_layer.weight:
+- 570
+gnn.layers.5.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.5.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.5.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.5.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.5.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.5.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.5.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.5.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.5.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.5.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.5.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.5.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.5.norm_layer.bias:
+- 570
+gnn.layers.5.norm_layer.weight:
+- 570
+gnn.layers.6.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.6.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.6.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.6.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.6.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.6.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.6.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.6.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.6.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.6.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.6.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.6.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.6.norm_layer.bias:
+- 570
+gnn.layers.6.norm_layer.weight:
+- 570
+gnn.layers.7.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.7.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.7.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.7.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.7.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.7.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.7.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.7.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.7.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.7.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.7.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.7.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.7.norm_layer.bias:
+- 570
+gnn.layers.7.norm_layer.weight:
+- 570
+gnn.layers.8.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.8.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.8.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.8.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.8.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.8.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.8.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.8.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.8.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.8.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.8.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.8.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.8.norm_layer.bias:
+- 570
+gnn.layers.8.norm_layer.weight:
+- 570
+gnn.layers.9.edge_model.fully_connected.0.linear.bias:
+- 37
+gnn.layers.9.edge_model.fully_connected.0.linear.weight:
+- 37
+- 1177
+gnn.layers.9.edge_model.fully_connected.0.normalization.bias:
+- 37
+gnn.layers.9.edge_model.fully_connected.0.normalization.weight:
+- 37
+gnn.layers.9.edge_model.fully_connected.1.linear.bias:
+- 37
+gnn.layers.9.edge_model.fully_connected.1.linear.weight:
+- 37
+- 37
+gnn.layers.9.node_model.fully_connected.0.linear.bias:
+- 570
+gnn.layers.9.node_model.fully_connected.0.linear.weight:
+- 570
+- 1784
+gnn.layers.9.node_model.fully_connected.0.normalization.bias:
+- 570
+gnn.layers.9.node_model.fully_connected.0.normalization.weight:
+- 570
+gnn.layers.9.node_model.fully_connected.1.linear.bias:
+- 570
+gnn.layers.9.node_model.fully_connected.1.linear.weight:
+- 570
+- 570
+gnn.layers.9.norm_layer.bias:
+- 570
+gnn.layers.9.norm_layer.weight:
+- 570
+pre_nn.layers.0.linear.bias:
+- 432
+pre_nn.layers.0.linear.weight:
+- 432
+- 139
+pre_nn.layers.0.normalization.bias:
+- 432
+pre_nn.layers.0.normalization.weight:
+- 432
+pre_nn.layers.1.linear.bias:
+- 108
+pre_nn.layers.1.linear.weight:
+- 108
+- 432
+pre_nn.layers.1.normalization.bias:
+- 108
+pre_nn.layers.1.normalization.weight:
+- 108
+pre_nn_edges.layers.0.linear.bias:
+- 216
+pre_nn_edges.layers.0.linear.weight:
+- 216
+- null
+pre_nn_edges.layers.0.normalization.bias:
+- 216
+pre_nn_edges.layers.0.normalization.weight:
+- 216
+pre_nn_edges.layers.1.linear.bias:
+- 54
+pre_nn_edges.layers.1.linear.weight:
+- 54
+- 216
+pre_nn_edges.layers.1.normalization.bias:
+- 54
+pre_nn_edges.layers.1.normalization.weight:
+- 54
+task_heads.graph_output_nn.graph.graph_output_nn.layers.0.linear.bias:
+- 570
+task_heads.graph_output_nn.graph.graph_output_nn.layers.0.linear.weight:
+- 570
+- 570
+task_heads.graph_output_nn.graph.graph_output_nn.layers.0.normalization.bias:
+- 570
+task_heads.graph_output_nn.graph.graph_output_nn.layers.0.normalization.weight:
+- 570
+task_heads.graph_output_nn.graph.graph_output_nn.layers.1.linear.bias:
+- 1104
+task_heads.graph_output_nn.graph.graph_output_nn.layers.1.linear.weight:
+- 1104
+- 570
+task_heads.graph_output_nn.node.graph_output_nn.layers.0.linear.bias:
+- 570
+task_heads.graph_output_nn.node.graph_output_nn.layers.0.linear.weight:
+- 570
+- 570
+task_heads.graph_output_nn.node.graph_output_nn.layers.0.normalization.bias:
+- 570
+task_heads.graph_output_nn.node.graph_output_nn.layers.0.normalization.weight:
+- 570
+task_heads.graph_output_nn.node.graph_output_nn.layers.1.linear.bias:
+- 142
+task_heads.graph_output_nn.node.graph_output_nn.layers.1.linear.weight:
+- 142
+- 570
+task_heads.task_heads.l1000_mcf7.layers.0.linear.bias:
+- 432
+task_heads.task_heads.l1000_mcf7.layers.0.linear.weight:
+- 432
+- 1104
+task_heads.task_heads.l1000_mcf7.layers.0.normalization.bias:
+- 432
+task_heads.task_heads.l1000_mcf7.layers.0.normalization.weight:
+- 432
+task_heads.task_heads.l1000_mcf7.layers.1.linear.bias:
+- null
+task_heads.task_heads.l1000_mcf7.layers.1.linear.weight:
+- null
+- 432
+task_heads.task_heads.l1000_vcap.layers.0.linear.bias:
+- 432
+task_heads.task_heads.l1000_vcap.layers.0.linear.weight:
+- 432
+- 1104
+task_heads.task_heads.l1000_vcap.layers.0.normalization.bias:
+- 432
+task_heads.task_heads.l1000_vcap.layers.0.normalization.weight:
+- 432
+task_heads.task_heads.l1000_vcap.layers.1.linear.bias:
+- null
+task_heads.task_heads.l1000_vcap.layers.1.linear.weight:
+- null
+- 432
+task_heads.task_heads.pcba_1328.layers.0.linear.bias:
+- 216
+task_heads.task_heads.pcba_1328.layers.0.linear.weight:
+- 216
+- 1104
+task_heads.task_heads.pcba_1328.layers.0.normalization.bias:
+- 216
+task_heads.task_heads.pcba_1328.layers.0.normalization.weight:
+- 216
+task_heads.task_heads.pcba_1328.layers.1.linear.bias:
+- null
+task_heads.task_heads.pcba_1328.layers.1.linear.weight:
+- null
+- 216
+task_heads.task_heads.pcqm4m_g25.layers.0.linear.bias:
+- 108
+task_heads.task_heads.pcqm4m_g25.layers.0.linear.weight:
+- 108
+- 1104
+task_heads.task_heads.pcqm4m_g25.layers.0.normalization.bias:
+- 108
+task_heads.task_heads.pcqm4m_g25.layers.0.normalization.weight:
+- 108
+task_heads.task_heads.pcqm4m_g25.layers.1.linear.bias:
+- null
+task_heads.task_heads.pcqm4m_g25.layers.1.linear.weight:
+- null
+- 108
+task_heads.task_heads.pcqm4m_n4.layers.0.linear.bias:
+- 108
+task_heads.task_heads.pcqm4m_n4.layers.0.linear.weight:
+- 108
+- 142
+task_heads.task_heads.pcqm4m_n4.layers.0.normalization.bias:
+- 108
+task_heads.task_heads.pcqm4m_n4.layers.0.normalization.weight:
+- 108
+task_heads.task_heads.pcqm4m_n4.layers.1.linear.bias:
+- null
+task_heads.task_heads.pcqm4m_n4.layers.1.linear.weight:
+- null
+- 108

@@ -1,0 +1,47 @@
+program: graphium/cli/train_finetune_test.py
+command:
+  - ${env}
+  - python
+  - ${program}
+  - accelerator=gpu
+  - model=mpnn
+  - architecture=largemix
+  - tasks=largemix
+  - training=largemix
+  - predictor.torch_scheduler_kwargs=null
+  - +finetuning=admet_scales
+  - constants.task=lipophilicity_astrazeneca
+  - finetuning.keep_modules_after_finetuning_module.task_heads-pcqm4m_g25.depth=2
+  - finetuning.keep_modules_after_finetuning_module.task_heads-pcqm4m_g25.hidden_dims=256
+  - finetuning.keep_modules_after_finetuning_module.task_heads-pcqm4m_g25.last_activation=none
+  - datamodule.args.batch_size_training=16
+  - predictor.optim_kwargs.lr=0.000005
+  - finetuning.epoch_unfreeze_all=0
+  - ${args_no_hyphens}
+method: grid
+metric:
+  name: loss/val
+  goal: minimize
+name: Finetune on ADMET -- lipophilicity_astrazeneca -- differnt scales
+parameters:
+  finetuning.pretrained_model:
+    values:
+      - 1M
+      - 3M
+      - 10M
+      - 30M
+      - 100M
+  constants.seed:
+    values:
+      - 100
+      - 200
+      - 300
+  # finetuning.unfreeze_pretrained_depth:
+  #   distribution: int_uniform
+  #   max: 2
+  #   min: 0
+  # finetuning.epoch_unfreeze_all:
+  #   distribution: int_uniform
+  #   max: 100
+  #   min: 0
+

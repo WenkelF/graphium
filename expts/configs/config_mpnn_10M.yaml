@@ -1,0 +1,403 @@
+accelerator:
+  float32_matmul_precision: medium
+  type: gpu
+architecture:
+  gnn:
+    activation: gelu
+    depth: 16
+    dropout: 0.1
+    hidden_dims: 337
+    hidden_dims_edges: 22
+    in_dim: 64
+    last_activation: none
+    last_normalization: layer_norm
+    layer_kwargs:
+      mlp_expansion_ratio: 1
+    layer_type: pyg:mpnnplus
+    normalization: layer_norm
+    out_dim: 337
+    residual_type: simple
+    virtual_node: none
+  graph_output_nn:
+    graph:
+      activation: relu
+      depth: 2
+      dropout: 0.1
+      hidden_dims: 337
+      last_activation: none
+      last_normalization: none
+      normalization: layer_norm
+      out_dim: 653
+      pooling:
+      - sum
+      residual_type: none
+    node:
+      activation: relu
+      depth: 2
+      dropout: 0.1
+      hidden_dims: 337
+      last_activation: none
+      last_normalization: none
+      normalization: layer_norm
+      out_dim: 84
+      pooling:
+      - sum
+      residual_type: none
+  model_type: FullGraphMultiTaskNetwork
+  pe_encoders:
+    encoders:
+      la_pos:
+        dropout: 0.1
+        encoder_type: laplacian_pe
+        first_normalization: none
+        hidden_dim: 64
+        input_keys:
+        - laplacian_eigvec
+        - laplacian_eigval
+        model_type: DeepSet
+        num_layers: 2
+        num_layers_post: 1
+        out_dim: 32
+        output_keys:
+        - feat
+      rw_pos:
+        dropout: 0.1
+        encoder_type: mlp
+        first_normalization: layer_norm
+        hidden_dim: 64
+        input_keys:
+        - rw_return_probs
+        normalization: layer_norm
+        num_layers: 2
+        out_dim: 32
+        output_keys:
+        - feat
+    last_norm: None
+    out_dim: 32
+    pool: sum
+  pre_nn:
+    activation: relu
+    depth: 2
+    dropout: 0.1
+    hidden_dims: 256
+    last_activation: none
+    last_normalization: layer_norm
+    normalization: layer_norm
+    out_dim: 64
+    residual_type: none
+  pre_nn_edges:
+    activation: relu
+    depth: 2
+    dropout: 0.1
+    hidden_dims: 128
+    last_activation: none
+    last_normalization: layer_norm
+    normalization: layer_norm
+    out_dim: 32
+    residual_type: none
+  task_heads:
+    l1000_mcf7:
+      activation: none
+      depth: 2
+      dropout: 0.1
+      hidden_dims: 256
+      last_activation: none
+      last_normalization: none
+      normalization: layer_norm
+      out_dim: 2934
+      residual_type: none
+      task_level: graph
+    l1000_vcap:
+      activation: none
+      depth: 2
+      dropout: 0.1
+      hidden_dims: 256
+      last_activation: none
+      last_normalization: none
+      normalization: layer_norm
+      out_dim: 2934
+      residual_type: none
+      task_level: graph
+    pcba_1328:
+      activation: relu
+      depth: 2
+      dropout: 0.1
+      hidden_dims: 128
+      last_activation: none
+      last_normalization: none
+      normalization: layer_norm
+      out_dim: 1328
+      residual_type: none
+      task_level: graph
+    pcqm4m_g25:
+      activation: relu
+      depth: 2
+      dropout: 0.1
+      hidden_dims: 64
+      last_activation: none
+      last_normalization: none
+      normalization: layer_norm
+      out_dim: 25
+      residual_type: none
+      task_level: graph
+    pcqm4m_n4:
+      activation: relu
+      depth: 2
+      dropout: 0.1
+      hidden_dims: 64
+      last_activation: none
+      last_normalization: none
+      normalization: layer_norm
+      out_dim: 4
+      residual_type: none
+      task_level: node
+constants:
+  data_dir: ../data/graphium/large-dataset/
+  datacache_path: ../datacache/large-dataset/
+  entity: multitask-gnn
+  gnn_dim: 337
+  gnn_edge_dim: 22
+  max_epochs: 100
+  name: best_large_data_mpnn
+  norm: layer_norm
+  raise_train_error: true
+  seed: 42
+  wandb:
+    entity: multitask-gnn
+    project: pretraining
+datamodule:
+  args:
+    batch_size_inference: 2048
+    batch_size_training: 2048
+    dataloading_from: disk
+    featurization:
+      add_self_loop: false
+      atom_property_list_float:
+      - degree
+      - formal-charge
+      - radical-electron
+      - aromatic
+      - in-ring
+      atom_property_list_onehot:
+      - atomic-number
+      - group
+      - period
+      - total-valence
+      edge_property_list:
+      - bond-type-onehot
+      - stereo
+      - in-ring
+      explicit_H: false
+      pos_encoding_as_features:
+        pos_types:
+          lap_eigval:
+            disconnected_comp: true
+            normalization: none
+            num_pos: 8
+            pos_level: node
+            pos_type: laplacian_eigval
+          lap_eigvec:
+            disconnected_comp: true
+            normalization: none
+            num_pos: 8
+            pos_level: node
+            pos_type: laplacian_eigvec
+          rw_pos:
+            ksteps: 16
+            pos_level: node
+            pos_type: rw_return_probs
+      use_bonds_weights: false
+    featurization_backend: loky
+    featurization_n_jobs: 6
+    featurization_progress: true
+    multiprocessing_context: fork
+    num_workers: 6
+    persistent_workers: false
+    prepare_dict_or_graph: pyg:graph
+    processed_graph_data_path: ../datacache/large-dataset/
+    task_specific_args:
+      l1000_mcf7:
+        df: null
+        df_path: ../data/graphium/large-dataset/LINCS_L1000_MCF7_0-2_th2.csv.gz
+        epoch_sampling_fraction: 1.0
+        label_cols: geneID-*
+        smiles_col: SMILES
+        splits_path: ../data/graphium/large-dataset/l1000_mcf7_random_splits.pt
+        task_level: graph
+      l1000_vcap:
+        df: null
+        df_path: ../data/graphium/large-dataset/LINCS_L1000_VCAP_0-2_th2.csv.gz
+        epoch_sampling_fraction: 1.0
+        label_cols: geneID-*
+        smiles_col: SMILES
+        splits_path: ../data/graphium/large-dataset/l1000_vcap_random_splits.pt
+        task_level: graph
+      pcba_1328:
+        df: null
+        df_path: ../data/graphium/large-dataset/PCBA_1328_1564k.parquet
+        epoch_sampling_fraction: 1.0
+        label_cols: assayID-*
+        smiles_col: SMILES
+        splits_path: ../data/graphium/large-dataset/pcba_1328_random_splits.pt
+        task_level: graph
+      pcqm4m_g25:
+        df: null
+        df_path: ../data/graphium/large-dataset/PCQM4M_G25_N4.parquet
+        epoch_sampling_fraction: 1.0
+        label_cols: graph_*
+        label_normalization:
+          method: normal
+          normalize_val_test: true
+        smiles_col: ordered_smiles
+        splits_path: ../data/graphium/large-dataset/pcqm4m_g25_n4_random_splits.pt
+        task_level: graph
+      pcqm4m_n4:
+        df: null
+        df_path: ../data/graphium/large-dataset/PCQM4M_G25_N4.parquet
+        epoch_sampling_fraction: 1.0
+        label_cols: node_*
+        label_normalization:
+          method: normal
+          normalize_val_test: true
+        seed: 42
+        smiles_col: ordered_smiles
+        splits_path: ../data/graphium/large-dataset/pcqm4m_g25_n4_random_splits.pt
+        task_level: node
+  module_type: MultitaskFromSmilesDataModule
+metrics:
+  l1000_mcf7:
+  - ignore_index: -1000
+    metric: auroc
+    multitask_handling: mean-per-label
+    name: auroc
+    num_classes: 3
+    target_nan_mask: -1000
+    target_to_int: true
+    task: multiclass
+    threshold_kwargs: null
+  - ignore_index: -1000
+    metric: averageprecision
+    multitask_handling: mean-per-label
+    name: avpr
+    num_classes: 3
+    target_nan_mask: -1000
+    target_to_int: true
+    task: multiclass
+    threshold_kwargs: null
+  l1000_vcap:
+  - ignore_index: -1000
+    metric: auroc
+    multitask_handling: mean-per-label
+    name: auroc
+    num_classes: 3
+    target_nan_mask: -1000
+    target_to_int: true
+    task: multiclass
+    threshold_kwargs: null
+  - ignore_index: -1000
+    metric: averageprecision
+    multitask_handling: mean-per-label
+    name: avpr
+    num_classes: 3
+    target_nan_mask: -1000
+    target_to_int: true
+    task: multiclass
+    threshold_kwargs: null
+  pcba_1328:
+  - metric: auroc
+    multitask_handling: mean-per-label
+    name: auroc
+    target_nan_mask: ignore
+    task: binary
+    threshold_kwargs: null
+  - metric: averageprecision
+    multitask_handling: mean-per-label
+    name: avpr
+    target_nan_mask: ignore
+    task: binary
+    threshold_kwargs: null
+  pcqm4m_g25:
+  - metric: mae_ipu
+    multitask_handling: mean-per-label
+    name: mae
+    target_nan_mask: null
+    threshold_kwargs: null
+  - metric: pearsonr_ipu
+    multitask_handling: mean-per-label
+    name: pearsonr
+    target_nan_mask: null
+    threshold_kwargs: null
+  - metric: r2_score_ipu
+    multitask_handling: mean-per-label
+    name: r2
+    target_nan_mask: null
+    threshold_kwargs: null
+  pcqm4m_n4:
+  - metric: mae_ipu
+    multitask_handling: mean-per-label
+    name: mae
+    target_nan_mask: null
+    threshold_kwargs: null
+  - metric: pearsonr_ipu
+    multitask_handling: mean-per-label
+    name: pearsonr
+    target_nan_mask: null
+    threshold_kwargs: null
+  - metric: r2_score_ipu
+    multitask_handling: mean-per-label
+    name: r2
+    target_nan_mask: null
+    threshold_kwargs: null
+predictor:
+  loss_fun:
+    l1000_mcf7:
+      alpha: 0.5
+      n_brackets: 3
+      name: hybrid_ce_ipu
+    l1000_vcap:
+      alpha: 0.5
+      n_brackets: 3
+      name: hybrid_ce_ipu
+    pcba_1328: bce_logits_ipu
+    pcqm4m_g25: mae_ipu
+    pcqm4m_n4: mae_ipu
+  metrics_every_n_train_steps: 1000
+  metrics_on_progress_bar:
+    l1000_mcf7: []
+    l1000_vcap: []
+    pcba_1328: []
+    pcqm4m_g25: []
+    pcqm4m_n4: []
+  metrics_on_training_set:
+    l1000_mcf7: []
+    l1000_vcap: []
+    pcba_1328: []
+    pcqm4m_g25: []
+    pcqm4m_n4: []
+  multitask_handling: flatten
+  optim_kwargs:
+    lr: 0.002738489058978671
+  random_seed: 42
+  scheduler_kwargs: null
+  target_nan_mask: null
+  torch_scheduler_kwargs:
+    max_num_epochs: 100
+    module_type: WarmUpLinearLR
+    verbose: false
+    warmup_epochs: 5
+tasks: {}
+trainer:
+  logger:
+    name: best_large_data_mpnn
+    project: best_large_data_mpnn
+    save_dir: logs/neurips2023-large/
+  model_checkpoint:
+    dirpath: model_checkpoints/large-dataset/best_mpnn_upd//
+    filename: best_large_data_mpnn
+    save_last: true
+  seed: 42
+  trainer:
+    check_val_every_n_epoch: 10
+    max_epochs: 100
+    min_epochs: 1
+    precision: 32

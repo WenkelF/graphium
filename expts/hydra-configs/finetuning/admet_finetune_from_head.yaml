@@ -1,0 +1,71 @@
+# @package _global_
+
+defaults:
+  - override /tasks/loss_metrics_datamodule: admet
+
+constants:
+  task: tbd
+  name: finetune_${constants.task}
+  wandb:
+    name: ${constants.name}
+    project: finetuning
+    entity: recursion
+  seed: 42
+  max_epochs: 20
+  data_dir: ../data/graphium/admet/${constants.task}
+  datacache_path: ../datacache/admet/${constants.task}
+  raise_train_error: true
+
+datamodule:
+  args:
+    batch_size_training: tbd
+    dataloading_from: ram
+    num_workers: 4
+  
+trainer:
+  model_checkpoint:
+    dirpath: model_checkpoints/admet/mpnn/
+  trainer:
+    precision: 32
+    check_val_every_n_epoch: 1
+  
+# predictor:
+#   optim_kwargs:
+#     lr: tbd
+
+# == Fine-tuning config == 
+
+finetuning:
+  task: ${constants.task}
+  level: graph
+  pretrained_model: large-mpnn
+  finetuning_module: task_heads
+  sub_module_from_pretrained: pcqm4m_g25
+  new_sub_module: dummy
+  drop_depth: 3
+
+  # keep_modules_after_finetuning_module: # optional
+  #   task_heads-pcqm4m_g25:
+  #     new_sub_module: lipophilicity_astrazeneca
+  #     hidden_dims: tbd
+  #     depth: tbd
+  #     last_activation: tbd
+  #     out_dim: 1
+
+  finetuning_head:
+    task: ${constants.task}
+    previous_module: task_heads
+    incoming_level: graph
+    model_type: mlp
+    dropout: ${architecture.pre_nn.dropout}
+    normalization: ${architecture.pre_nn.normalization}
+    in_dim: ${architecture.graph_output_nn.graph.out_dim}
+    hidden_dims: tbd
+    depth: tbd
+    last_activation: tbd
+    out_dim: 1
+    last_layer_is_readout: true
+
+  # Training
+  # unfreeze_pretrained_depth: tbd
+  epoch_unfreeze_all: 0

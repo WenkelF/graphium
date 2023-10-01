@@ -1,0 +1,48 @@
+program: graphium/cli/train_finetune_test.py
+command:
+  - ${env}
+  - python
+  - ${program}
+  - accelerator=gpu
+  - model=mpnn
+  - architecture=largemix
+  - tasks=largemix
+  - training=largemix
+  - predictor.torch_scheduler_kwargs=null
+  - +finetuning=admet_baseline_test
+  - constants.task=bbb_martins
+  - ${args_no_hyphens}
+method: grid
+metric:
+  name: loss/val
+  goal: minimize
+name: Test early stopping with best checkpoint -- bbb_martins
+parameters:
+  constants.seed:
+    values:
+      - 100
+      - 200
+  finetuning.pretrained_model:
+    values:
+      - 1M
+      - 3M
+      - 10M
+      - 10M-old1
+      - 10M-old2
+      - 30M
+      - 100M
+  finetuning.epoch_unfreeze_all:
+    values:
+      # - none
+      - 0
+      # - 20
+  finetuning.keep_modules_after_finetuning_module.task_heads-pcqm4m_g25.depth:
+    values:
+      # - 1
+      - 2
+  trainer.test_from_checkpoint:
+    values:
+      - none
+      - best.ckpt
+      - last.ckpt
+
